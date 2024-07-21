@@ -14,7 +14,7 @@ public class Guru {
     private String tempatLahir;
     private Date tglLahir;
     private String jenisKelamin;
-    private String statusKepegawaian;
+    private StatusKepegawaian statusKepegawaian;
     private String mengajarMapel;
 }
 

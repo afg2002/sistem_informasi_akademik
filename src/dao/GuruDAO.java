@@ -5,6 +5,7 @@
 package dao;
 import database.DatabaseMySQL;
 import entity.Guru;
+import entity.StatusKepegawaian;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class GuruDAO {
             stmt.setString(3, guru.getTempatLahir());
             stmt.setDate(4, new Date(guru.getTglLahir().getTime()));
             stmt.setString(5, guru.getJenisKelamin());
-            stmt.setString(6, guru.getStatusKepegawaian());
+            stmt.setString(6, guru.getStatusKepegawaian().toString());
             stmt.setString(7, guru.getMengajarMapel());
             stmt.executeUpdate();
         }
@@ -40,7 +41,7 @@ public class GuruDAO {
             stmt.setString(2, guru.getTempatLahir());
             stmt.setDate(3, new Date(guru.getTglLahir().getTime()));
             stmt.setString(4, guru.getJenisKelamin());
-            stmt.setString(5, guru.getStatusKepegawaian());
+            stmt.setString(5, guru.getStatusKepegawaian().toString());
             stmt.setString(6, guru.getMengajarMapel());
             stmt.setInt(7, guru.getIdGuru());
             stmt.executeUpdate();
@@ -67,7 +68,7 @@ public class GuruDAO {
                         rs.getString("tempat_lahir"),
                         rs.getDate("tgl_lahir"),
                         rs.getString("jenis_kelamin"),
-                        rs.getString("status_kepegawaian"),
+                        StatusKepegawaian.valueOf(rs.getString("status_kepegawaian")),
                         rs.getString("mengajar_mapel")
                     );
                 }
@@ -88,7 +89,7 @@ public class GuruDAO {
                     rs.getString("tempat_lahir"),
                     rs.getDate("tgl_lahir"),
                     rs.getString("jenis_kelamin"),
-                    rs.getString("status_kepegawaian"),
+                    StatusKepegawaian.valueOf(rs.getString("status_kepegawaian")),
                     rs.getString("mengajar_mapel")
                 );
                 guruList.add(guru);

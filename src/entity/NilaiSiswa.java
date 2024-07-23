@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class NilaiSiswa {
     private int idNilai;
-    private int tahunPelajaran;
+    private String tahunPelajaran;
     private int semester;
     private String kelas;
     private int angkatan;
-    private int nis;
+    private String nis;
     private String kodeMapel;
     private int idGuru;
     private double nilaiAbsen;

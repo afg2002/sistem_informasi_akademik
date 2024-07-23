@@ -4,7 +4,7 @@
  */
 package sistem_informasi_akademik;
 
-import view.LoginFrame;
+import view.DaftarFrame;
 
 /**
  *
@@ -16,7 +16,7 @@ public class Sistem_informasi_akademik {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new LoginFrame().setVisible(true);
+        new DaftarFrame().setVisible(true);
     }
     
 }

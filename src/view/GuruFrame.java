@@ -12,6 +12,8 @@ import entity.Mapel;
 import java.sql.*;
 import entity.StatusKepegawaian;
 import static helper.Helper.resetForm;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,6 +51,17 @@ public class GuruFrame extends javax.swing.JFrame {
                 }
             }
         });
+        
+        tabDataGuru.getParent().addComponentListener(new ComponentAdapter() {
+        @Override
+        public void componentResized(final ComponentEvent e) {
+            if (tabDataGuru.getPreferredSize().width < tabDataGuru.getParent().getWidth()) {
+                tabDataGuru.setAutoResizeMode(tabDataGuru.AUTO_RESIZE_ALL_COLUMNS);
+            } else {
+                tabDataGuru.setAutoResizeMode(tabDataGuru.AUTO_RESIZE_OFF);
+            }
+    }
+});
     }
     
      private void populateFieldsFromSelectedRow(int rowIndex) {
@@ -110,7 +123,7 @@ public class GuruFrame extends javax.swing.JFrame {
         rbPerempuan = new javax.swing.JRadioButton();
         btnReset = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 255));
 
@@ -148,6 +161,9 @@ public class GuruFrame extends javax.swing.JFrame {
 
         txtStatusKepegawaian.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Status", "TETAP", "HONOR" }));
 
+        e.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        tabDataGuru.setAutoCreateRowSorter(true);
         tabDataGuru.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -245,39 +261,37 @@ public class GuruFrame extends javax.swing.JFrame {
                                     .addComponent(jLabel8))
                                 .addGap(26, 26, 26)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(rbPerempuan)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(rbLaki)
-                                        .addGap(0, 0, Short.MAX_VALUE))
                                     .addComponent(txtTempatLahir)
                                     .addComponent(txtTanggalLahir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(txtMengajarMapel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtStatusKepegawaian, javax.swing.GroupLayout.Alignment.TRAILING, 0, 156, Short.MAX_VALUE))))))
+                                    .addComponent(txtStatusKepegawaian, javax.swing.GroupLayout.Alignment.TRAILING, 0, 156, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(rbPerempuan)
+                                            .addComponent(rbLaki))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(123, 123, 123)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnCetak)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(e, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btnSave)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnUpdate)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnReset)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(btnDelete)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(txtCari)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(btnCari))))))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnSave)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnReset)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(btnDelete)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnCari))))
+                            .addComponent(e))))
                 .addGap(27, 27, 27))
         );
         jPanel1Layout.setVerticalGroup(
@@ -390,8 +404,7 @@ public class GuruFrame extends javax.swing.JFrame {
         resetForm(jPanel1, rbGroupJK);
     }
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-         // Retrieve values from GUI components
-//        int idGuru = Integer.parseInt(txtId.getText());
+        
         String nama = txtNama.getText();
         String tempatLahir = txtTempatLahir.getText();
         java.util.Date tanggalLahirUtil = txtTanggalLahir.getDate();

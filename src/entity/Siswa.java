@@ -14,12 +14,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Siswa {
-    private int nis;
+    private String nis;
     private String nama;
     private String tempatLahir;
     private Date tglLahir;
     private String jenisKelamin;
-    private int nisn;
+    private String nisn;
     private int angkatan;
     private String kelas;
     private String agama;

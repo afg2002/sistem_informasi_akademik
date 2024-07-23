@@ -16,6 +16,22 @@ public class MapelDAO {
     public MapelDAO() {
         this.connection = DatabaseMySQL.connectDB();
     }
+    
+     public Mapel getMapelByKode(String kodeMapel) throws SQLException {
+        String query = "SELECT * FROM mapel WHERE kode_mapel = ?";
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, kodeMapel);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return new Mapel(
+                        rs.getString("kode_mapel"),
+                        rs.getString("nama_mapel")
+                    );
+                }
+            }
+        }
+        return null;
+    }
 
     public void addMapel(Mapel mapel) throws SQLException {
         String query = "INSERT INTO mapel (kode_mapel, nama_mapel) VALUES (?, ?)";
@@ -43,20 +59,31 @@ public class MapelDAO {
         }
     }
 
-    public Mapel getMapelByKode(String kodeMapel) throws SQLException {
-        String query = "SELECT * FROM mapel WHERE kode_mapel = ?";
+    // Method to search mapel by kode_mapel or nama_mapel
+    public List<Mapel> searchMapel(String searchTerm) throws SQLException {
+        List<Mapel> mapelList = new ArrayList<>();
+        String query;
+        
+        query = "SELECT * FROM mapel WHERE kode_mapel LIKE ? OR nama_mapel LIKE ?";
+        
+
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, kodeMapel);
+                // Set parameters only if searchTerm is not empty
+                String searchPattern = "%" + searchTerm + "%";
+                stmt.setString(1, searchPattern);
+                stmt.setString(2, searchPattern);
+        
             try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    return new Mapel(
+                while (rs.next()) {
+                    Mapel mapel = new Mapel(
                         rs.getString("kode_mapel"),
                         rs.getString("nama_mapel")
                     );
+                    mapelList.add(mapel);
                 }
             }
         }
-        return null;
+        return mapelList;
     }
 
     public List<Mapel> getAllMapel() throws SQLException {

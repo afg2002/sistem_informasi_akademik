@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PembayaranDAO {
 
@@ -16,6 +18,26 @@ public class PembayaranDAO {
     public PembayaranDAO() {
         this.connection = DatabaseMySQL.connectDB();
     }
+    
+    public List<Pembayaran> getAllPembayaran() throws SQLException {
+    List<Pembayaran> pembayaranList = new ArrayList<>();
+    String query = "SELECT * FROM pembayaran";
+    
+    try (PreparedStatement stmt = connection.prepareStatement(query);
+         ResultSet rs = stmt.executeQuery()) {
+        
+        while (rs.next()) {
+            Pembayaran pembayaran = new Pembayaran(
+                rs.getString("kode_pembayaran"),
+                JenisPembayaran.valueOf(rs.getString("jenis_pembayaran")), // Convert String to enum
+                rs.getDouble("nominal")
+            );
+            pembayaranList.add(pembayaran);
+        }
+    }
+    
+    return pembayaranList;
+}
 
     public void addPembayaran(Pembayaran pembayaran) throws SQLException {
         String query = "INSERT INTO pembayaran (kode_pembayaran, jenis_pembayaran, nominal) VALUES (?, ?, ?)";

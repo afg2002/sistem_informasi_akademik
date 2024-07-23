@@ -20,7 +20,7 @@ public class DatabaseMySQL {
             Connection koneksi = DriverManager.getConnection("jdbc:mysql://localhost/akademik", "root", "");
             return koneksi;
         } catch (ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "Koneksi bermasalah, " + e);
             return null;
         }
     }

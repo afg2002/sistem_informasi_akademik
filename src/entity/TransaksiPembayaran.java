@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class TransaksiPembayaran {
     private int noTransaksi;
-    private int nis;
+    private String nis;
     private Date tglPembayaran;
     private String kodePembayaran;
     private double jumlahBayar;

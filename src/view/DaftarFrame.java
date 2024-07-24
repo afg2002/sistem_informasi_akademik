@@ -280,7 +280,7 @@ public class DaftarFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
-        helper.Helper.resetForm(this, null);
+        helper.Helper.resetForm(jPanel1, null);
     }//GEN-LAST:event_btnBatalActionPerformed
 
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed

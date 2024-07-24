@@ -117,7 +117,6 @@ public class GuruFrame extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnCari = new javax.swing.JButton();
         txtCari = new javax.swing.JTextField();
-        btnCetak = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         rbLaki = new javax.swing.JRadioButton();
         rbPerempuan = new javax.swing.JRadioButton();
@@ -129,7 +128,7 @@ public class GuruFrame extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Data Guru");
+        jLabel1.setText("Data Master Guru");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -206,10 +205,6 @@ public class GuruFrame extends javax.swing.JFrame {
             }
         });
 
-        btnCetak.setBackground(new java.awt.Color(0, 51, 51));
-        btnCetak.setForeground(new java.awt.Color(255, 255, 255));
-        btnCetak.setText("Cetak");
-
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Jenis Kelamin");
@@ -277,7 +272,6 @@ public class GuruFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnCetak)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -304,9 +298,7 @@ public class GuruFrame extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
-                .addGap(32, 32, 32)
-                .addComponent(btnCetak)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(60, 60, 60)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -509,6 +501,7 @@ public class GuruFrame extends javax.swing.JFrame {
 
         if (idText.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Please enter an ID to search.");
+            loadDataGuru();
             return;
         }
 
@@ -586,7 +579,6 @@ public class GuruFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCari;
-    private javax.swing.JButton btnCetak;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSave;

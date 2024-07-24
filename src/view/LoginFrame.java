@@ -176,7 +176,7 @@ public class LoginFrame extends javax.swing.JFrame {
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
+                        .addGap(184, 184, 184)
                         .addComponent(txtDaftar)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -235,7 +235,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
-        helper.Helper.resetForm(this, null);
+        helper.Helper.resetForm(jPanel1, null);
     }//GEN-LAST:event_btnBatalActionPerformed
     
     private void login() {
@@ -254,7 +254,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Login successful: " + user.getNama());
                 DashboardFrame df = new DashboardFrame();
                 df.setVisible(true);
-                df.txtJam.setText(user.getNama());
+                df.txtUser.setText(user.getNama());
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Login failed: Invalid username or password");

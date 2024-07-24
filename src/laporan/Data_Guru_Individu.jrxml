@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="50b778f3-6259-4eaa-bc69-f98ad55a1570">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="param" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select * from guru WHERE id_guru = $P{param}]]>
+	</queryString>
+	<field name="id_guru" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nama" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tempat_lahir" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tgl_lahir" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="jenis_kelamin" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="status_kepegawaian" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mengajar_mapel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="143" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="-2" width="164" height="126" uuid="9ed5e0ee-41d7-4961-86c5-b85cbd66af2d"/>
+				<imageExpression><![CDATA["src\\assets\\logo_smp_100x100.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="170" y="0" width="287" height="62" uuid="e2438899-0019-4aba-8a92-558b7e2f013d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="30" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[SMP Salman Alfarisi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="170" y="62" width="287" height="64" forecolor="#000000" uuid="1baf967f-cefb-4a95-b55d-3b9c70f5e96c"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Jl. Cikaret Kramat No.1, Harapan Jaya, Kec. Cibinong, Kabupaten Bogor, Jawa Barat 16916]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="271" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="0" y="29" width="555" height="1" backcolor="#000000" uuid="d526fcf6-648d-4c57-abd1-dcbd47517004"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="237" y="0" width="100" height="30" uuid="0a25de4e-6e90-48c7-9d4e-816f5bd1da6c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Data Pengajar]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="0" y="0" width="555" height="1" backcolor="#000000" uuid="54873813-e8b6-496e-ba2f-1ee91531032d"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="0" y="1" width="1" height="270" backcolor="#000000" uuid="c089c1e7-2d38-43e5-962c-efca27e74145"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="554" y="0" width="1" height="271" backcolor="#000000" uuid="52a0ea21-0dfc-44f3-841f-a9063af35bb8"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="26" y="59" width="192" height="30" uuid="2bd83df1-d02f-46e3-a385-243b604b0701"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID GURU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="89" width="192" height="30" uuid="59a43135-db84-4d6c-8661-e477e41502b9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAMA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="119" width="192" height="30" uuid="129d99d7-9a4d-4dd8-9474-31455e358bfd"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TEMPAT TANGGAL LAHIR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="59" width="36" height="30" uuid="838b221f-9653-4b28-bfa1-0b5bff997abe"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="89" width="36" height="30" uuid="6d7f0d88-4ce1-4c4e-a5ea-3e28ca563e61"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="119" width="36" height="30" uuid="1636fa89-e8c1-4210-b6a5-871cc87cb7c3"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="149" width="192" height="30" uuid="aae8a35e-0989-405c-9a87-ce8897dbbbc6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JENIS KELAMIN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="149" width="36" height="30" uuid="2dd9104b-a556-46ec-b6c9-b60ad8e3d3c1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="179" width="192" height="30" uuid="474d3e59-76ed-41ad-8d7a-40ed42f55193"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STATUS KEPEGAWAIAN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="179" width="36" height="30" uuid="39b30ba2-658b-4147-8f85-ba2d6403a1d4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="205" width="192" height="30" uuid="468598f0-2ec5-46b8-971f-1d82f626469d"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MENGAJAR MAPEL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="205" width="36" height="30" uuid="9327b353-f526-44b3-aefc-db21dc150c79"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="288" y="59" width="100" height="30" uuid="adf64c40-0a1b-4f5f-813a-de1bae280bf0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_guru}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="89" width="100" height="30" uuid="506ffe59-6b41-4c02-9b4b-722abdcd0d8e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="119" width="100" height="30" uuid="ef21c454-4744-478e-a380-9a7610c71cf3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tempat_lahir}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="421" y="119" width="11" height="30" uuid="5d21b6e0-4a5c-4668-a5bb-75eaf83f8e48"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[/]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="432" y="119" width="100" height="30" uuid="8fcd7a31-1556-4613-bd55-f653b0519cc1"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMMM yyyy", new Locale("id", "ID")).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="149" width="100" height="30" uuid="97a94d7b-0429-41de-a64c-35b6b0b0e8ba"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jenis_kelamin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="179" width="100" height="26" uuid="1d7b7f20-f01a-4278-9f35-5e5093b2aaa9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status_kepegawaian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="288" y="209" width="100" height="26" uuid="b299aaac-7d86-46a5-ab72-d8b2cccdc392"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mengajar_mapel}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" mode="Transparent" x="1" y="270" width="555" height="1" backcolor="#000000" uuid="949cf331-b7ce-4f31-b8ab-52e1e8e07b4a"/>
+				<graphicElement>
+					<pen lineWidth="2.0" lineColor="#000000"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<columnFooter>
+		<band height="114" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="b43a1f49-a4a9-43ce-baf5-5d4821972f81"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="419" y="94" width="147" height="20" uuid="ef239196-7a55-4a7b-b458-31fc0f48499d"/>
+				<textElement>
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Dulhamin Napitupulu, S.Pd. I]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="406" y="4" width="147" height="20" uuid="019147c5-2ba9-4122-a4cb-6cef0fcd3266"/>
+				<textFieldExpression><![CDATA["Cibinong , "+new SimpleDateFormat("EEEE dd MMMM yyyy", new Locale("id", "ID")).format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="406" y="24" width="149" height="20" uuid="c7c13a2f-53c4-4171-a78b-1426248f0a2c"/>
+				<text><![CDATA[Kepala Sekolah]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-21" y="1" width="597" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="0bc4593b-0642-40ef-a3b3-77187f739f47"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="533" y="0" width="40" height="20" forecolor="#736343" uuid="e6efb562-a258-4d7c-bce9-869dde1a2869"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="453" y="0" width="80" height="20" forecolor="#736343" uuid="a03ca7bb-c8dd-49f2-bdb3-1b6729fa7510"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -127,7 +127,6 @@ tabDataSiswa.setModel(tableModel);
         btnDelete = new javax.swing.JButton();
         btnCari = new javax.swing.JButton();
         txtCari = new javax.swing.JTextField();
-        btnCetak = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         rbLaki = new javax.swing.JRadioButton();
         rbPerempuan = new javax.swing.JRadioButton();
@@ -232,10 +231,6 @@ tabDataSiswa.setModel(tableModel);
                 btnCariActionPerformed(evt);
             }
         });
-
-        btnCetak.setBackground(new java.awt.Color(0, 51, 51));
-        btnCetak.setForeground(new java.awt.Color(255, 255, 255));
-        btnCetak.setText("Cetak");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -394,7 +389,6 @@ tabDataSiswa.setModel(tableModel);
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnCetak)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -421,9 +415,7 @@ tabDataSiswa.setModel(tableModel);
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnCetak)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(40, 40, 40)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(e, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -540,6 +532,7 @@ tabDataSiswa.setModel(tableModel);
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         resetForm(jPanel1, rbGroupJK);
+        txtAlamat.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
@@ -746,7 +739,6 @@ tabDataSiswa.setModel(tableModel);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCari;
-    private javax.swing.JButton btnCetak;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btnSave;

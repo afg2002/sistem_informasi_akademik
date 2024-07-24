@@ -216,7 +216,6 @@ public class NilaiSiswaFrame extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnCari = new javax.swing.JButton();
         txtCari = new javax.swing.JTextField();
-        btnCetak = new javax.swing.JButton();
         btnReset = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtAngkatan = new javax.swing.JTextField();
@@ -324,10 +323,6 @@ public class NilaiSiswaFrame extends javax.swing.JFrame {
                 btnCariActionPerformed(evt);
             }
         });
-
-        btnCetak.setBackground(new java.awt.Color(0, 51, 51));
-        btnCetak.setForeground(new java.awt.Color(255, 255, 255));
-        btnCetak.setText("Cetak");
 
         btnReset.setText("Reset");
         btnReset.addActionListener(new java.awt.event.ActionListener() {
@@ -496,7 +491,6 @@ public class NilaiSiswaFrame extends javax.swing.JFrame {
                             .addComponent(btnHitung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnCetak)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnSave)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -527,9 +521,7 @@ public class NilaiSiswaFrame extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCetak)
-                    .addComponent(txtID))
+                .addComponent(txtID)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -643,6 +635,8 @@ public class NilaiSiswaFrame extends javax.swing.JFrame {
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         resetForm(jPanel1, rbGroupJK);
+        txtKeterangan.setText("");
+        semesterAndAcademicYear();
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
@@ -732,7 +726,61 @@ public class NilaiSiswaFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        
+        try {
+            // Validate input fields
+            if (txtNis.getText().trim().isEmpty() || txtKodeMapel.getText().trim().isEmpty() || txtIdGuru.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "NIS, Kode Mapel, and ID Guru cannot be empty.");
+                return;
+            }
+
+            // Get values from text fields
+            String tahunPelajaran = txtTahunPelajaran.getText().trim();
+            int semester = Integer.parseInt(txtSemester.getText().trim());
+            String kelas = txtKelas.getText().trim();
+            int angkatan = Integer.parseInt(txtAngkatan.getText().trim());
+            String nis = txtNis.getText().trim();
+            String kodeMapel = txtKodeMapel.getText().trim();
+            int idGuru = Integer.parseInt(txtIdGuru.getText().trim());
+            double nilaiAbsen = Double.parseDouble(txtNilaiAbsen.getText().trim());
+            double nilaiHarian = Double.parseDouble(txtNilaiHarian.getText().trim());
+            double nilaiUts = Double.parseDouble(txtNilaiUts.getText().trim());
+            double nilaiUas = Double.parseDouble(txtNilaiUas.getText().trim());
+            double nilaiRata2 = Double.parseDouble(txtNilaiRata2.getText().trim());
+            String grade = txtGrade.getText().trim();
+            String keterangan = txtKeterangan.getText().trim();
+
+            // Create a NilaiSiswa object
+            NilaiSiswa nilaiSiswa = new NilaiSiswa();
+            nilaiSiswa.setIdNilai(Integer.parseInt(txtID.getText()));
+            nilaiSiswa.setTahunPelajaran(tahunPelajaran);
+            nilaiSiswa.setSemester(semester);
+            nilaiSiswa.setKelas(kelas);
+            nilaiSiswa.setAngkatan(angkatan);
+            nilaiSiswa.setNis(nis);
+            nilaiSiswa.setKodeMapel(kodeMapel);
+            nilaiSiswa.setIdGuru(idGuru);
+            nilaiSiswa.setNilaiAbsen(nilaiAbsen);
+            nilaiSiswa.setNilaiHarian(nilaiHarian);
+            nilaiSiswa.setNilaiUts(nilaiUts);
+            nilaiSiswa.setNilaiUas(nilaiUas);
+            nilaiSiswa.setNilaiRata2(nilaiRata2);
+            nilaiSiswa.setGrade(grade);
+            nilaiSiswa.setKeterangan(keterangan);
+
+            // Save the NilaiSiswa object using the DAO
+            NilaiSiswaDAO nilaiSiswaDAO = new NilaiSiswaDAO();
+            nilaiSiswaDAO.updateNilaiSiswa(nilaiSiswa);
+
+            // Refresh the data and reset the form
+            refresh();
+
+            // Show success message
+            JOptionPane.showMessageDialog(this, "Data Nilai Siswa saved successfully.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Invalid input: " + e.getMessage());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error saving data: " + e.getMessage());
+        }  
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -933,6 +981,7 @@ public class NilaiSiswaFrame extends javax.swing.JFrame {
     private void refresh(){
         loadDataNilaiSiswa();
         resetForm(jPanel1, rbGroupJK);
+        semesterAndAcademicYear();
     }
     /**
      * @param args the command line arguments
@@ -981,7 +1030,6 @@ public class NilaiSiswaFrame extends javax.swing.JFrame {
     private javax.swing.JButton btnCariGuru;
     private javax.swing.JButton btnCariMapel;
     private javax.swing.JButton btnCariSiswa;
-    private javax.swing.JButton btnCetak;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnHitung;
     private javax.swing.JButton btnReset;
